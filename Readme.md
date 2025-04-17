@@ -150,7 +150,7 @@ The combination or ensemble of these models can lead to an **advanced intrusion 
 ## 🛠 Installation
 
 ```bash
-git clone https://github.com/teja85053/network-anomaly-detection.git
+git clone https://github.com/teja85053/network_anomaly.git
 cd network-anomaly-detection
 pip install -r requirements.txt
 ```
