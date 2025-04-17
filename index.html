@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison analaysis of Machine Learning Algorithms</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image1.jpg') center/cover no-repeat;
+            opacity: 0.5;
+            z-index: -1; 
+        }
+
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            color:white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 6s ease-in-out;
+        }
+        
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .nav-button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .nav-button.active {
+            background-color: #798ef3;
+            color: white;
+        }
+        .certificate-content {
+            display: none;
+            max-width: 800px;
+            width: 100%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .certificate-content.active {
+            display: block;
+        }
+
+        .certificate-details img {
+            max-height: 500px;
+            width: 500px;
+        }
+        #encoder {
+            height: 700px; 
+            width: 200px;   
+        }
+        #decoder{
+            height:1000px;
+            width: 200px;
+        }
+        #generator, #discriminator{
+            height: auto;
+            width: 800px;
+        }
+        .certificate-details {
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            .navigation {
+                flex-wrap: wrap;
+            }
+            .nav-button {
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="splash-screen" id="splash-screen">
+        COMPARATIVE STUDY TO DETECT ANOMALIES IN COMPUTER NETWORK USING MACHINE LEARNING
+    </div>
+        <h2>COMPARATIVE STUDY TO DETECT ANOMALIES IN COMPUTER NETWORK USING MACHINE LEARNING</h2>
+    <div class="navigation">
+        <button class="nav-button" data-cert="1">Xg Boost</button>
+        <button class="nav-button" data-cert="2">Auto Encoders</button>
+        <button class="nav-button" data-cert="3">Generative adversarial networks</button>
+    </div>
+
+    <div id="certificate-1" class="certificate-content active">
+        <div class="certificate-details">
+            <p>
+                <h2>XGBoost-based Classification</h2>
+            </p>
+            <p>Uses gradient boosting for binary classification of normal vs anomalous network traffic</p>
+            <p>Implements both binary and multi-class classification approaches</p>
+            <p>Features GPU acceleration for faster training</p>
+            <br>
+            <p><b>Accuracy For Xg boost Model:</b>0.9999389317949574</p>
+            <br>
+            <p><b>xgboost confusion matrix:</b> The Confusion matrix is between Network and Anomoly Detection.</p>
+            <img src="xgboost_confusion_matrix.png" alt="xgboost_confusion_matrix">
+            <br>
+            <p><b>Xgboost Roc Curve:</b> Roc used to evaluate the performance of a classification model.</p>
+            <img src="Xgboost_roc.png" alt="Xgboost_roc">
+        </div>
+    </div>
+
+    <div id="certificate-2" class="certificate-content">
+        <div class="certificate-details">
+            <p>
+                <h2>Autoencoder-based Anomaly Detection</h2>
+            </p>
+            <p>Uses a deep autoencoder neural network architecture</p>
+            <p>Learns to reconstruct normal network traffic patterns</p>
+            <p>Detects anomalies based on reconstruction error</p>
+            <p>Includes dimensionality reduction through a latent space bottleneck</p>
+            <p>Uses K-means clustering to group detected anomalies</p>
+            <br>
+            <p><h4>The Autoencoders Architecture</h4></p>
+            <img src="autoencoders.png" alt="autoencoder">
+            <br>
+            <p><b>The Encoding layer</b></p>
+            <img src="encoder.png" alt="encoder" id="encoder">
+            <br>
+            <p><b>The Decoding layer</b></p>
+            <img src="decoder.png" alt="decoder" id="decoder">
+            <br>
+            <br>
+            <h4>Traning MSE: 0.000258</h4>
+            <h4>Testing MSE: 0.000252</h4>
+            <br>
+            <p><b>Autoencoder Confusion Matrix</b>
+            </p>
+            <img src="ae_confusionmatrix.png" alt="matrix">
+            <br>
+            <p><b>Auto Encoders Roc Curve:</b></p>
+            <img src="ae_roc.png" alt="Curve">
+        </div>
+    </div>
+    <div id="certificate-3" class="certificate-content">
+        <div class="certificate-details">
+            <h2>GAN-based (Generative Adversarial Network) Detection</h2>
+            <p>Implements a GAN architecture to learn normal network traffic patterns</p>
+            <p>Uses the discriminator to detect anomalies</p>
+            <p>Achieves high accuracy in distinguishing normal vs anomalous traffic</p>
+            <br>
+            <p><h4>The Generator Architecture</h4></p>
+            <img src="generator.png" alt="generator" id="generator">
+            <br>
+            <p><b>The  Discriminator Network</b></p>
+            <img src="discriminator.png" alt=" Discriminator Network" id="discriminator">
+            <br>
+            <p><b>About the model and the Traning</b></p>
+            <p>The generator first predicts on a batch of noise samples. As the generator has randomly initialized weights initially, the output of the generator at this stage is nothing but meaningless values.
+                <br>
+                <img src=Gan1.png alt="Alt text that describes the graphic" title="Title text" />
+                <br>
+                The Discriminator inputs a stack of samples - the first half of which is the output of the generator and the second half is a batch of data samples from the real dataset. We train the Discriminator on this stack with the target labels  0 (Fake) for half the stack and 1 for the second half of the stack. The result of this is that the Discrimator is able to distinguish between the Real and Fake samples.
+                <br>
+                <img src=Gan2.png alt="Alt text that describes the graphic" title="Title text" />
+                <br>
+                The weights of the discriminator are frozen by setting the trainable parameter to False.
+                
+                To train the Generator, We first feed it random noise and let the entire GAN output a probability with the Discriminator weights remaining frozen. As expected this value would be less than 0.5 since the Discriminator was previously set to output a value close to 0 if the input was not genuine .
+                <br>
+                <img src=Gan3.png alt="Alt text that describes the graphic" title="Title text" />
+                <br>
+                
+                Now comes the trick. We tell the GAN that the expected output is 1. This results in the errors being backpropagated only to the Generator. With every sample in the batch the generator's weights are tuned such that the output of the GAN is close to 1, meaning the Generator is now learning to produce samples that resemble the real data.
+                
+                This process loops back to the first step for each batch in the training set.</p>
+            <br>
+            <p><b>Accuracy Score :</b> 0.9987175676941052</p>
+            <p><b>Precision :</b> 0.9377289377289377</p>
+            <p><b>Recall :</b> 0.9343065693430657</p>
+            <p><b>F1 :</b> 0.9360146252285192</p>
+            <br>
+            <p><b>GAN Confusion Matrix</b></p>
+            <img src="gan_matrix.png" alt="matrix">
+            <br>
+            <p><b>GAN Roc Curve:</b></p>
+            <img src="gan_roc.png" alt="Curve">
+        </div>
+    </div>
+
+    <script>
+        
+        setTimeout(() => {
+            document.getElementById('splash-screen').classList.add('hidden');
+        }, 1000);
+
+
+        document.querySelectorAll('.nav-button').forEach(button => {
+            button.addEventListener('click', () => {
+
+                document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.certificate-content').forEach(content => content.classList.remove('active'));
+
+
+                button.classList.add('active');
+                const certId = button.getAttribute('data-cert');
+                document.getElementById(`certificate-${certId}`).classList.add('active');
+            });
+        });
+
+         document.querySelector('.navigation').classList.remove('active');
+        document.querySelectorAll('.certificate-content').forEach(content => content.classList.remove('active'));
+        
+    </script>
+</body>
+</html>
